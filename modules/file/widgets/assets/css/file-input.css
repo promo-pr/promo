@@ -1,0 +1,22 @@
+.upload.thumbnail {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.upload.thumbnail:hover .hidden {
+    display: block!important;
+}
+.upload-delete {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.upload-delete i {
+    font-size: 24px;
+    text-shadow: 1px 1px 3px #000;
+}

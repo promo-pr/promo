@@ -1,0 +1,111 @@
+// Media query variables.
+@tablet:  ~"screen and (min-width: @{screen-sm-min})";
+@normal:  ~"screen and (min-width: @{screen-md-min})";
+@wide:    ~"screen and (min-width: @{screen-lg-min})";
+
+
+body {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+a:focus, button:focus {
+  outline: none!important;
+}
+
+.alert-container {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  .alert {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+.element-invisible {
+  display: block;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background: transparent;
+}
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#login-form {
+  max-width: 550px;
+  @media @tablet {
+    padding-left: 220px;
+    background: url("img/bgLogin.png") no-repeat;
+  }
+}
+.mfp-content {
+  h3 {
+    margin-top: 0;
+  }
+}
+.refresh-animate {
+  -animation: spin .7s infinite linear;
+  -ms-animation: spin .7s infinite linear;
+  -webkit-animation: spinw .7s infinite linear;
+  -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spinw {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+  from { -moz-transform: rotate(0deg);}
+  to { -moz-transform: rotate(360deg);}
+}
+
+
+
+.mfp-content {
+  &>.ajax-form-wrapper {
+    position: relative;
+    margin: 0 auto;
+  }
+  .ajax-form {
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #fff;
+  }
+  .form-group:last-of-type {
+    margin-bottom: 0;
+  }
+  #login-form {
+    margin: 20px auto;
+    label {
+      color: #fff;
+    }
+  }
+}
+
+.required-name {
+  height: 0;
+  overflow: hidden;
+}
+#PopMap {
+  background: rgba(0, 0, 0, 0.8);
+  &>.material-icons {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 3em;
+    color: #666;
+    cursor: pointer;
+    z-index: 9999;
+  }
+}
+

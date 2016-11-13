@@ -1,0 +1,47 @@
+{
+  "name": "promo-pr/cms",
+  "description": "CMS Yii 2",
+  "homepage": "http://promo-pr.ru",
+  "type": "project",
+  "license": "BSD-3-Clause",
+  "support": {
+    "source": "http://promo-pr.ru"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "~2.0.9",
+    "yiisoft/yii2-bootstrap": "~2.0.6",
+    "yiisoft/yii2-swiftmailer": "~2.0.6",
+    "samdark/sitemap": "~2.0.6",
+    "yiisoft/yii2-imagine": "~2.1.0",
+    "vova07/yii2-imperavi-widget": "~1.2.10",
+    "elisdn/yii2-hybrid-authmanager": "~1.0.1",
+    "bower-asset/slick-carousel":"~1.6.0",
+    "bower-asset/magnific-popup":"~1.1.0",
+    "bower-asset/air-datepicker":"~2.2.3",
+    "bower-asset/html.sortable":"~0.4.2"
+  },
+  "require-dev": {
+    "yiisoft/yii2-debug": "*",
+    "yiisoft/yii2-gii": "*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php commands/CleanController.php"
+    ],
+    "post-update-cmd": [
+      "php commands/CleanController.php"
+    ]
+  }
+
+}

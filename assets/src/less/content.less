@@ -1,0 +1,106 @@
+@import "variable-overrides.less";
+
+#Main {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.field-callform-hour, .field-callform-min {
+  display: inline-block;
+  width: 105px;
+  margin: 0;
+}
+.btn-33 {
+  display: inline-block;
+  width: 100px;
+}
+
+.field-body {
+  margin-bottom: 30px;
+}
+.flipper {
+  a {
+    display: block;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 1px dashed #ccc;
+    &:hover {
+      border: 1px solid #ccc;
+    }
+  }
+  .material-icons {
+    font-size: 40px;
+    position: absolute;
+    vertical-align: middle;
+    background-color: #fff;
+  }
+  .prev {
+    padding-left: 40px;
+    .material-icons {
+      top: 0;
+      left: 0;
+    }
+  }
+  .next {
+    padding-right: 40px;
+    .material-icons {
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+/* css for calendar */
+.b-calendar {
+  font: 14px/1.2 Arial, sans-serif;
+  background: #f2f2f2;
+}
+.b-calendar--along {
+  width: 300px;
+  padding: 30px 40px;
+  margin: 50px auto;
+}
+.b-calendar--many {
+  padding: 20px;
+  width: 250px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px 20px;
+}
+.b-calendar__title {
+  text-align: center;
+  margin: 0 0 20px;
+}
+.b-calendar__year {
+  font-weight: bold;
+  color: #333;
+}
+.b-calendar__tb {
+  width: 100%;
+}
+.b-calendar__head {
+  font: bold 14px/1.2 Arial, sans-serif;
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #c0c0c0;
+}
+.b-calendar__np {
+  padding: 5px;
+}
+.b-calendar__day {
+  font: 14px/1.2 Arial, sans-serif;
+  padding: 8px 5px;
+  text-align: center;
+}
+.b-calendar__weekend {
+  color: @brand-danger;
+}
+
+.b-calendar__today {
+  border-radius: 50%;
+  background-color: #1c94c4;
+  color: #fff;
+}

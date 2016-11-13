@@ -1,0 +1,78 @@
+@bower: "../../../vendor/bower/bootstrap/less/";
+@import "@{bower}variables.less";
+
+@font-size-base:          16px;
+@font-family-sans-serif:  "Roboto Condensed", sans-serif;
+@link-hover-decoration: none;
+
+@brand-primary:         darken(#428bca, 6.5%); // #337ab7
+@brand-success:         #5cb85c;
+@brand-info:            #5bc0de;
+@brand-warning:         #f0ad4e;
+@brand-danger:          #d9534f;
+
+@border-radius-base:        0;
+@border-radius-large:       0;
+@border-radius-small:       0;
+
+@breadcrumb-padding-vertical:   0;
+@breadcrumb-padding-horizontal: 0;
+@breadcrumb-bg:                 transparent;
+@breadcrumb-separator:          ">";
+
+
+.datetimepicker {
+  padding: 4px!important;
+  td, th, table tr td span {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+}
+.next, .prev {
+  display: inline-block!important;
+  padding: 0 10px!important;
+  margin-top: 10px;
+  width: 0!important;
+  height: 0!important;
+  border-top: 5px solid transparent!important;
+  border-bottom: 5px solid transparent!important;
+}
+.next {
+  border-left: 5px solid #777!important;
+}
+.prev {
+  border-right:5px solid #777!important;
+}
+
+
+@headings-font-weight:    400;
+@headings-color:          @brand-success;
+
+@alert-link-font-weight:      400;
+@badge-font-weight:           400;
+@close-font-weight:           400;
+
+
+
+.refresh-animate {
+  -animation: spin .7s infinite linear;
+  -ms-animation: spin .7s infinite linear;
+  -webkit-animation: spinw .7s infinite linear;
+  -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spinw {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+  from { -moz-transform: rotate(0deg);}
+  to { -moz-transform: rotate(360deg);}
+}
