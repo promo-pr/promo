@@ -1,6 +1,6 @@
 {
-  "name": "promo-pr/cms",
-  "description": "CMS Yii 2",
+  "name": "promo-pr/promo",
+  "description": "Base themplate Yii 2",
   "homepage": "http://promo-pr.ru",
   "type": "project",
   "license": "BSD-3-Clause",
@@ -29,19 +29,27 @@
   "config": {
     "process-timeout": 1800
   },
+  "scripts": {
+    "post-create-project-cmd": [
+      "yii\\composer\\Installer::postCreateProject"
+    ]
+  },
   "extra": {
+    "yii\\composer\\Installer::postCreateProject": {
+      "setPermission": [
+        {
+          "runtime": "0777",
+          "web/assets": "0777",
+          "yii": "0755"
+        }
+      ],
+      "generateCookieValidationKey": [
+        "config/web.php"
+      ]
+    },
     "asset-installer-paths": {
       "npm-asset-library": "vendor/npm",
       "bower-asset-library": "vendor/bower"
     }
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "php commands/CleanController.php"
-    ],
-    "post-update-cmd": [
-      "php commands/CleanController.php"
-    ]
   }
-
 }
