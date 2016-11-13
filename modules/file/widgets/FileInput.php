@@ -80,7 +80,8 @@ class FileInput extends Widget
             $preview = '';
             foreach ( $files as $i => $file) {
                 $del = Url::to(['/admin/files/upload/delete', 'fid'=>$file->fid]);
-                $preview .= "<div data-fid='$file->fid' class='upload thumbnail' style='background-image: url($file->thumb)'>";
+                $preview .= "<div data-fid='$file->fid' data-bg='$file->thumb' class='upload thumbnail' style='background-image: url($file->thumb)'>";
+                $preview .= "<span data-fid='{$file->fid}' data-href='{$file->uri}' class='hidden upload-crop text-success'><i class=\"material-icons\">crop</i></span>";
                 $preview .= "<span data-href='{$del}' class='hidden upload-delete text-danger'><i class=\"material-icons\">delete_forever</i></span>";
                 $preview .= '</div>';
             }

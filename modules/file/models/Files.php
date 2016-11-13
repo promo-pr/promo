@@ -94,9 +94,11 @@ class Files extends ActiveRecord
             $this->model_name = $model_name;
             $this->model_id = $model_id;
             $this->attribute = strstr($attribute, '-', true);
+            if (!$this->attribute) {
+                $this->attribute = $attribute;
+            }
             $this->name = $file->name;
             $this->size = $file->size;
-
             $year = date('Y', time());
             $month = date('m', time());
             $public = Yii::getAlias('@webroot');
@@ -183,16 +185,22 @@ class Files extends ActiveRecord
     public function beforeDelete()
     {
         $public = Yii::getAlias('@webroot');
+        if ( file_exists( $public . $this->uri )) {
+            unlink( $public . $this->uri );
+        }
+        $this->clearCache();
+        return parent::beforeDelete();
+    }
+
+    public function clearCache()
+    {
+        $public = Yii::getAlias('@webroot');
         $cacheFiles = FileHelper::findFiles( $public . '/cache' );
         foreach ($cacheFiles as $cacheFile) {
             if ( stripos($cacheFile, FileHelper::normalizePath($this->uri)) ) {
                 unlink($cacheFile);
             }
         }
-        if ( file_exists( $public . $this->uri )) {
-            unlink( $public . $this->uri );
-        }
-        return parent::beforeDelete();
     }
 
     public function getItem()

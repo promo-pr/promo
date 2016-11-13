@@ -104,7 +104,6 @@ class FilesBehavior extends Behavior
 
     private function fileToken ()
     {
-        $m = get_class($this->owner);
         $this->model_name = substr(strrchr( get_class($this->owner) , '\\' ), 1 );
         $pk = reset($this->owner->primaryKey());
         $this->model_id = $this->owner->{$pk};

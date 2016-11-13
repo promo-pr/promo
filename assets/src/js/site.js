@@ -2,21 +2,6 @@
 
     $(function() {
 
-        $('body').removeClass('no_js').addClass('js');
-
-        $('#FrontSlider').slick({
-            dots: true,
-            lazyLoad: 'progressive',
-            infinite: false,
-            centerMode: true,
-            variableWidth: true,
-            prevArrow: '<i class="slick-prev material-icons">keyboard_arrow_left</i>',
-            nextArrow: '<i class="slick-next material-icons">keyboard_arrow_right</i>',
-            customPaging: function(slider, i) {
-                return $('<i class="material-icons">radio_button_unchecked</i>');
-            }
-        });
-
         $('.map-popup').on('click', function (e) {
             e.preventDefault();
             var $body = $('body'),

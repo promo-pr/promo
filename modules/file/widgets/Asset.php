@@ -15,6 +15,7 @@ class Asset extends AssetBundle
 	 * @inheritdoc
 	 */
 	public $css = [
+        'css/cropper.min.css',
 	    'css/file-input.css'
 	];
 
@@ -22,6 +23,7 @@ class Asset extends AssetBundle
 	 * @inheritdoc
 	 */
 	public $js = [
+        'js/cropper.min.js',
 	    'js/file-input.js'
 	];
 

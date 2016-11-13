@@ -39,6 +39,9 @@ class BodyClass extends Widget
 
     public function run()
     {
+        $view = $this->getView();
+        $view->registerJs("$('body').removeClass('no_js').addClass('js');", $view::POS_READY);
+
         $content = ob_get_clean();
         $text = empty($text = $this->controller->actionParams['viewPath']) ? 'Фабрика сайтов (http://promo-pr.ru)' : $text;
         $result = '<!--'.$text.'-->';

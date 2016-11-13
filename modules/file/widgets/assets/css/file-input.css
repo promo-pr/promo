@@ -10,13 +10,27 @@
 .upload.thumbnail:hover .hidden {
     display: block!important;
 }
-.upload-delete {
+.upload.thumbnail span {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
     cursor: pointer;
 }
-.upload-delete i {
+.upload-crop {
+    bottom: 10px;
+    right: 40px;
+}
+.upload-delete {
+    bottom: 10px;
+    right: 10px;
+}
+.upload-delete i, .upload-crop i {
     font-size: 24px;
     text-shadow: 1px 1px 3px #000;
+}
+.cropper-full {
+    position: fixed;
+    top: 50px;
+    bottom: 50px;
+    left: 50px;
+    right: 50px;
+    z-index: 9999;
 }

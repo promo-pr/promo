@@ -4,10 +4,12 @@ namespace app\modules\file\controllers\backend;
 
 use Yii;
 use app\modules\file\models\Files;
+use yii\helpers\FileHelper;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 class UploadController extends Controller
 {
@@ -20,6 +22,7 @@ class UploadController extends Controller
                     'delete' => ['POST'],
                     'file' => ['POST'],
                     'image' => ['POST'],
+                    'crop' => ['POST'],
                 ],
             ],
         ];
@@ -59,6 +62,23 @@ class UploadController extends Controller
         }
         Yii::$app->response->format = Response::FORMAT_JSON;
         return $result;
+    }
+
+    public function actionCrop($fid)
+    {
+        if ($file = Files::findOne($fid)) {
+            $path = Yii::getAlias('@webroot').$file->uri;
+            $path = FileHelper::normalizePath($path);
+            unlink($path);
+            if (move_uploaded_file($_FILES['Crop']['tmp_name'], $path)) {
+                $file->clearCache();
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            throw new NotFoundHttpException();
+        }
     }
 
     /**
