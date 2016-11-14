@@ -8,7 +8,7 @@
         var point = $('#map-point'),
             map = new ymaps.Map('map', {
                 center: [53.54478, 49.34723],
-                zoom: 14,
+                zoom: zoom,
                 controls: ['zoomControl']
             });
         if (geoObj && !point.data('id') && !point.data('error')) {
@@ -18,9 +18,8 @@
             });
             objectManager.add(geoObj);
             map.geoObjects.add(objectManager);
-            map.setBounds( objectManager.getBounds(), { checkZoomRange: true } );
-            if (map.getZoom()>18) {
-                map.setZoom(14)
+            if ( geoObj.features.length > 1 ) {
+                map.setBounds( objectManager.getBounds(), { checkZoomRange: true } );
             }
         } else {
             setEditObj();
@@ -29,7 +28,7 @@
         if(pointPreset.val().length < 5) {
             pointPreset.val('islands#darkGreenStretchyIcon');
         }
-// TODO: Настроить zoom
+
         map.events.add('actiontick', function () {
             $('#map-zoom').val(map.action.getCurrentState().zoom);
         });
@@ -54,7 +53,7 @@
                     draggable: true
                 });
                 var editObj = map.geoObjects.add(myGeoObject);
-                map.setCenter(coor, 14);
+                map.setCenter(coor, zoom);
                 editObj.events.add('drag', function (e) {
                     point.val(getCoords(e.get('target').geometry.getCoordinates()));
                 });

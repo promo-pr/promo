@@ -26,6 +26,7 @@ class MapInput extends Widget
         $points = $model::find()->all();
         if (count($points)>0) {
             $geoObject = ['type' => 'FeatureCollection'];
+            $zoom = [];
             foreach ($points as $point) {
                 if ($rb) {
                     $delete = '<hr>'
@@ -51,12 +52,15 @@ class MapInput extends Widget
                         'preset' => $point->preset,
                     ],
                 ];
+                $zoom[] = $point->zoom;
             }
         } else {
             $geoObject = false;
+            $zoom[0] = 14;
         }
+        $geoObject = Json::encode($geoObject);
         $view = $this->view;
-        $view->registerJs("var geoObj = ".Json::encode($geoObject).";", $view::POS_HEAD);
+        $view->registerJs("var geoObj = {$geoObject}, zoom = {$zoom[0]};", $view::POS_HEAD);
         MapInputAsset::register($view);
         
         return Html::tag('div', '', ['id' => 'map', 'style' => "height:{$this->height}px"]);

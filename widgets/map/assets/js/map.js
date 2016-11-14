@@ -7,7 +7,7 @@
     function init () {
         var map = new ymaps.Map('map', {
                 center: [53.544781, 49.347234],
-                zoom: 16,
+                zoom: zoom,
                 controls: ['zoomControl']
             }),
             objectManager = new ymaps.ObjectManager({
@@ -17,9 +17,8 @@
         if (geoObj) {
             objectManager.add(geoObj);
             map.geoObjects.add(objectManager);
-            map.setBounds( objectManager.getBounds(), { checkZoomRange: true } );
-            if (map.getZoom()>18) {
-                map.setZoom(14)
+            if ( geoObj.features.length > 1 ) {
+                map.setBounds( objectManager.getBounds(), { checkZoomRange: true } );
             }
         }
     }
