@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model \app\modules\user\models\backend\User */
+/* @var $model \app\modules\admin\models\Map */
 
 $this->title = 'Схема проезда';
 $this->params['breadcrumbs'][] = $this->title;
@@ -13,13 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-
-<?php if (Yii::$app->session->hasFlash('configMapSave')): ?>
-    <div class="alert alert-success">
-        <?= 'Настройки карты сохранены.'; ?>
-    </div>
-<?php endif; ?>
 
 <?php $form = ActiveForm::begin(['id' => 'config-map']); ?>
 

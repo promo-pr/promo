@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\models\Config;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -16,14 +17,22 @@ class DefaultController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $settings = Config::find()->indexBy('key')->all();
+        if (Config::loadMultiple($settings, Yii::$app->request->post()) && Config::validateMultiple($settings)) {
+            foreach ($settings as $setting) {
+                $setting->save(false);
+            }
+            Yii::$app->session->setFlash('success', "Настройки сайта сохранены.");
+            return $this->render('index', ['settings' => $settings]);
+        }
+        return $this->render('index', ['settings' => $settings]);
     }
 
     public function actionMap()
     {
         $model = new Map();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('configMapSave');
+            Yii::$app->session->setFlash('success', "Настройки карты сохранены.");
             return $this->refresh();
         } else {
             return $this->render('map', [

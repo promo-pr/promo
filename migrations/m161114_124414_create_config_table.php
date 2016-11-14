@@ -22,8 +22,21 @@ class m161114_124414_create_config_table extends Migration
             'id' => Schema::TYPE_PK,
             'key' => Schema::TYPE_STRING . ' NOT NULL',
             'value' => Schema::TYPE_STRING,
-            'default_value' => Schema::TYPE_STRING,
+            'label' => Schema::TYPE_STRING,
+            'permanent' => Schema::TYPE_BOOLEAN . ' DEFAULT false',
         ], $tableOptions);
+
+        $this->batchInsert('{{%config}}', ['key','value', 'label', 'permanent'], [
+            ['app_email', '1@promo-pr.ru', 'Email для отправки уведомлений', true],
+            ['sms_tel', '', 'Номер телефона для отправки СМС', true],
+            ['sms_key', '', 'Секретный ключ СМС-сервиса', true],
+            ['org_name', 'Фабрика сайтов', 'Название организации', true],
+            ['org_address', 'г.Тольятти', 'Адрес организации', true],
+            ['org_email', '', 'Email организации', true],
+            ['org_tel', '', 'Номер телефона организации', true],
+        ]);
+
+        $this->createIndex('idx-config-key', '{{%config}}', 'key', true);
     }
 
     /**
