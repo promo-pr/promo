@@ -30,7 +30,6 @@ class Post extends ActiveRecord
     const STATUS_WAIT = 0;
 
     public $image;
-    public $file;
 
     public function behaviors()
     {
@@ -47,10 +46,6 @@ class Post extends ActiveRecord
             [
                 'class' => FilesBehavior::className(),
                 'attribute' => 'image',
-            ],
-            [
-                'class' => FilesBehavior::className(),
-                'attribute' => 'file',
             ],
         ];
     }

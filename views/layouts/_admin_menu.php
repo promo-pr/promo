@@ -22,8 +22,8 @@ echo Nav::widget([
     'activateParents' => true,
     'items' => array_filter([
         ['label' => '<i class="material-icons">home</i>', 'url' => Yii::$app->homeUrl],
-        ['label' => '<i class="material-icons">settings</i>', 'url' => ['/admin/default/index']],
-        ['label' => 'Содержимое', 'items' => [
+        ['label' => '<i class="material-icons">settings</i> Настройки', 'url' => ['/admin/default/index']],
+        ['label' => '<i class="material-icons">library_books</i> Содержимое', 'items' => [
             ['label' => 'Страницы' . Html::a('<i class="material-icons">add_circle_outline</i>', ['/admin/pages/default/create']), 'url' => ['/admin/pages/default/index']],
             ['label' => 'Новости' . Html::a('<i class="material-icons">add_circle_outline</i>', ['/admin/posts/default/create']), 'url' => ['/admin/posts/default/index']],
             Yii::$app->user->can('permAdminRoot')?

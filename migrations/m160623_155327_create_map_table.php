@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m160623_155327_map extends Migration
+class m160623_155327_create_map_table extends Migration
 {
     public function up()
     {

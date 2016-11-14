@@ -33,10 +33,6 @@ use yii\helpers\Url;
     <?= $form->field($model, 'image[]')->widget(FileInput::className(), ['multiple'=>true]); ?>
 </div>
 
-<div class="form-group field-post-file">
-    <?= $form->field($model, 'file[]')->widget(FileInput::className(), ['multiple'=>true]); ?>
-</div>
-
 <?= $form->field($model, 'body')->widget(Widget::className(), [
     'settings' => [
         'lang' => 'ru',
