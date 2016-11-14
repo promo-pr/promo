@@ -68,7 +68,8 @@ class Picker extends Widget
         if ($this->selectorHidden === null) {
             $this->selectorHidden = '#picker-' . $this->options['id'];
         }
-        $this->options['class'] = 'form-control';
+        $this->options['class'] = 'input-date-picker form-control';
+        $this->options['readonly'] = true;
         parent::init();
     }
 
@@ -103,17 +104,20 @@ class Picker extends Widget
             'autoClose' => true,
             'onSelect' => '%ONSELECT%',
         ]);
-        $js = <<<JS
+        $js = <<<INIT
         var start = new Date({$time}),
             datepicker = $('{$this->selector}').datepicker({$set}).data('datepicker');
             datepicker.selectDate(start);
-JS;
+INIT;
         $js = str_replace('"%start%"', 'start', $js);
-        $jsCallback = <<<KB
+        $jsCallback = <<<CALLBACK
+        if (d instanceof Date ){
         var timestamp = Math.round(d.getTime() / 1000);
         $('{$this->selectorHidden}').val(timestamp);
-console.log(timestamp)
-KB;
+        } else {
+        datepicker.selectDate(start);
+        }
+CALLBACK;
         $js = str_replace('"%ONSELECT%"', 'function(fd, d) {'.$jsCallback.'}', $js);
         $view->registerJs($js, $view::POS_READY);
     }
