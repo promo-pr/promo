@@ -12,10 +12,6 @@ return [
     'language' => 'ru_RU',
     'timeZone' => 'Europe/Samara',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => [
-        'log',
-        'app\modules\user\Bootstrap',
-    ],
     'components' => [
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
@@ -42,7 +38,7 @@ return [
                     'rules' => [
                         '' => 'default/index',
                         'upload/<_a>' =>'files/upload/<_a>',
-                        '<_a:(map|sitemap)>' => 'default/<_a>',
+                        '<_a:(map|sitemap|flush)>' => 'default/<_a>',
                         '<_a:(map-edit|map-delete)>/<id:\d+>' => 'default/<_a>',
                         '<_m>/create' => '<_m>s/default/create',
                         '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
@@ -88,6 +84,11 @@ return [
         'log' => [
             'class' => 'yii\log\Dispatcher',
         ],
+    ],
+    'bootstrap' => [
+        'log',
+        'app\modules\admin\Settings',
+        'app\modules\user\Bootstrap',
     ],
     'params' => $params,
 ];

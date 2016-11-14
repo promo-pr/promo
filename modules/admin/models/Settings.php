@@ -12,14 +12,14 @@ use yii\db\ActiveRecord;
  * @property string $value
  * @property string $label
  */
-class Config extends ActiveRecord
+class Settings extends ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'config';
+        return 'settings';
     }
 
     /**

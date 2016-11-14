@@ -37,10 +37,10 @@ echo Nav::widget([
     'activateParents' => true,
     'items' => array_filter([
         ['label' => '<i class="material-icons">build</i>', 'items' => [
-            ['label' => '<i class="material-icons">cached</i> Обновить sitemap', 'url' => ['/admin/default/sitemap'], 'linkOptions' => ['data-method' => 'post']],
             ['label' => '<i class="material-icons">place</i> Схема проезда', 'url' => ['/admin/default/map']],
             Yii::$app->user->can('permAdminRoot')?
                 ['label' => '<i class="material-icons">people</i> Пользователи', 'url' => ['/admin/users/default/index']] : false,
+            ['label' => '<i class="material-icons">cached</i> Очистить кэш', 'url' => ['/admin/default/flush'], 'linkOptions' => ['data-method' => 'post']],
         ]],
         ['label' => '<i class="material-icons">power_settings_new</i>', 'url' => ['/user/default/logout'], 'linkOptions' => ['data-method' => 'post']],
     ]),

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $settings \app\modules\admin\models\Config */
+/* @var $settings \app\modules\admin\models\Settings */
 
 $this->title = 'Основные настройки сайта';
 ?>

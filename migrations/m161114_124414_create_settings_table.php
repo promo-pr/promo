@@ -4,10 +4,11 @@ use yii\db\Migration;
 use yii\db\Schema;
 
 /**
- * Handles the creation of table `config`.
+ * Handles the creation of table `settings`.
  */
-class m161114_124414_create_config_table extends Migration
+class m161114_124414_create_settings_table extends Migration
 {
+
     /**
      * @inheritdoc
      */
@@ -18,7 +19,7 @@ class m161114_124414_create_config_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%config}}', [
+        $this->createTable('{{%settings}}', [
             'id' => Schema::TYPE_PK,
             'key' => Schema::TYPE_STRING . ' NOT NULL',
             'value' => Schema::TYPE_STRING,
@@ -26,7 +27,7 @@ class m161114_124414_create_config_table extends Migration
             'permanent' => Schema::TYPE_BOOLEAN . ' DEFAULT false',
         ], $tableOptions);
 
-        $this->batchInsert('{{%config}}', ['key','value', 'label', 'permanent'], [
+        $this->batchInsert('{{%settings}}', ['key','value', 'label', 'permanent'], [
             ['app_email', '1@promo-pr.ru', 'Email для отправки уведомлений', true],
             ['sms_tel', '', 'Номер телефона для отправки СМС', true],
             ['sms_key', '', 'Секретный ключ СМС-сервиса', true],
@@ -36,7 +37,7 @@ class m161114_124414_create_config_table extends Migration
             ['org_tel', '', 'Номер телефона организации', true],
         ]);
 
-        $this->createIndex('idx-config-key', '{{%config}}', 'key', true);
+        $this->createIndex('idx-settings-key', '{{%settings}}', 'key', true);
     }
 
     /**
@@ -44,6 +45,6 @@ class m161114_124414_create_config_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('{{%config}}');
+        $this->dropTable('{{%settings}}');
     }
 }
