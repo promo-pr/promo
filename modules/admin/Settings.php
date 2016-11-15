@@ -9,11 +9,14 @@ class Settings implements BootstrapInterface
 {
     public function bootstrap($app)
     {
-        $settings = $app->db->createCommand('SELECT * FROM settings')
-            ->queryAll();
+        $is_table = $app->db->getTableSchema('settings');
+        if ($is_table) {
+            $settings = $app->db->createCommand('SELECT * FROM settings')
+                ->queryAll();
 
-        foreach ($settings as $key => $val) {
-            Yii::$app->params['settings'][$val['key']] = $val['value'];
+            foreach ($settings as $key => $val) {
+                Yii::$app->params['settings'][$val['key']] = $val['value'];
+            }
         }
     }
 }
