@@ -9,8 +9,8 @@ class Settings implements BootstrapInterface
 {
     public function bootstrap($app)
     {
-        $is_table = $app->db->getTableSchema('settings');
-        if ($is_table) {
+        if ( Yii::$app->db->getTableSchema('settings') ) {
+
             $settings = $app->db->createCommand('SELECT * FROM settings')
                 ->queryAll();
 
