@@ -16,9 +16,7 @@ echo Html::encode($model->title);
 $this->endBlock(); ?>
 
 <div class="container">
-    <?= \app\widgets\map\Map::widget(['height' => 400]) ?>
     <div class="field-body">
         <?= $model->body ?>
     </div>
-
 </div>
