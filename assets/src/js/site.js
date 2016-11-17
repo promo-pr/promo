@@ -131,13 +131,15 @@
         $.ajax({
             url:'/ajax/map',
             type:'POST',
-            success: function(data) {
-                if (data != 'false') {
-                    objectManager.add(data);
+            success: function(geoObj) {
+                if (geoObj != 'false') {
+                    geoObj = $.parseJSON(geoObj);
+                    objectManager.add(geoObj);
                     map.geoObjects.add(objectManager);
-                    map.setBounds( objectManager.getBounds(), { checkZoomRange: true } );
-                    if (map.getZoom()>18) {
-                        map.setZoom(14)
+                    if ( geoObj.features.length > 1 ) {
+                        map.setBounds( objectManager.getBounds(), { checkZoomRange: true } );
+                    } else {
+                        map.setZoom(16);
                     }
                 }
             }
