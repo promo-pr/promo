@@ -8,15 +8,6 @@ composer global require "fxp/composer-asset-plugin:^1.2.0"
 composer create-project --prefer-dist promo-pr/promo project
 ~~~
 
-or clone the repository for `pull` command availability:
-
-~~~
-git clone https://github.com/promo-pr/cms.git project
-cd project
-composer global require "fxp/composer-asset-plugin:~1.0.0"
-composer install
-~~~
-
 Fill your DB connection information in `environments/**/common-local.php` and init an environment:
 
 ~~~
