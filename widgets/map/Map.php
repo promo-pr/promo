@@ -71,7 +71,7 @@ class Map extends Widget
         $geoObject = Json::encode($geoObject);
         $view = $this->view;
         $view->registerJs("var geoObj = {$geoObject}, zoom = {$zoom[0]};", $view::POS_HEAD);
-        MapInputAsset::register($view);
+        MapAsset::register($view);
 
         return Html::tag('div', '', ['id' => 'map', 'style' => "height:{$this->height}px"]);
     }
