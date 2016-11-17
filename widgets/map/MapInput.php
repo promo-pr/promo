@@ -52,7 +52,11 @@ class MapInput extends Widget
                         'preset' => $point->preset,
                     ],
                 ];
-                $zoom[] = $point->zoom;
+                if ($point->zoom) {
+                    $zoom[] = $point->zoom;
+                } else {
+                    $zoom[] = 14;
+                }
             }
         } else {
             $geoObject = false;
