@@ -37,9 +37,13 @@ class DefaultController extends Controller
                 $setting->save(false);
             }
             Yii::$app->session->setFlash('success', "Настройки сайта сохранены.");
-            return $this->render('index', ['settings' => $settings]);
+            return $this->render('index', [
+                'settings' => $settings,
+            ]);
         }
-        return $this->render('index', ['settings' => $settings]);
+        return $this->render('index', [
+            'settings' => $settings,
+        ]);
     }
 
     public function actionFlush()
